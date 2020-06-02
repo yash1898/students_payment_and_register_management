@@ -1,0 +1,15 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+
+<div class='container'>
+    <h2 class="text-center" style="margin-top: 50px;"> View Students </h2>
+    <br><br>
+    <div class="list-group">
+        <a href="{% url 'register:view_students' %}" class="list-group-item list-group-item-action">All Students</a>
+        <a href="{% url 'register:view_first_students' %}" class="list-group-item list-group-item-action">First Standard Students</a>
+        <a href="{% url 'register:view_second_students' %}" class="list-group-item list-group-item-action">Second Standard Students</a>
+        <a href="{% url 'register:view_third_students' %}" class="list-group-item list-group-item-action">Third Standard Students</a>
+        <a href="{% url 'register:view_forth_students' %}" class="list-group-item list-group-item-action">Fourth Standard Students</a>
+    </div>
+{% endblock content %}

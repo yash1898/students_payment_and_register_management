@@ -1,0 +1,85 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+<style>
+
+</style>
+<div class="container" style="margin-top:50px">
+    <h2 class="text-center">{{ students.first_name }} Profile</h2>
+    <br><br>
+            <label class="row">
+                <label class="col-sm-2">
+                ID:
+                </label>
+                <label class="col-sm-2">
+                </label>
+                <label class="col-sm-8">
+                {{ students.id }}
+                </label>
+            </label>
+            <label class="row">
+                <label class="col-sm-2">
+                First Name:
+                </label>
+                <label class="col-sm-2">
+                </label>
+                <label class="col-sm-8">
+                {{ students.first_name }}
+                </label>
+            </label>
+            <label class="row">
+                <label class="col-sm-2">
+                Last Name:
+                </label>
+                <label class="col-sm-2">
+                </label>
+                <label class="col-sm-8">
+                {{ students.last_name }}
+                </label>
+            </label>
+            <label class="row">
+                <label class="col-sm-2">
+                Total Fee:
+                </label>
+                <label class="col-sm-2">
+                </label>
+                <label class="col-sm-8">
+                {{ students.total_fee }}
+                </label>
+            </label>
+            <label class="row">
+                <label class="col-sm-2">
+                Recieved Fee:
+                </label>
+                <label class="col-sm-2">
+                </label>
+                <label class="col-sm-8" style="color:green; font-weight: 700;">
+                {{ students.fee_recieved }}
+                </label>
+            </label>
+            <label class="row">
+                <label class="col-sm-2">
+                Remaining Fee:
+                </label>
+                <label class="col-sm-2">
+                </label>
+                <label class="col-sm-8" style="color:red; font-weight: 700;">
+                {{ remain }}
+                </label>
+            </label>
+        </div>
+        <br><br>
+        <div class="row">
+            <div class="align-self-center mx-auto">
+                <a href="{% url 'register:edit_students' students.id %}" class="btn btn-primary" >Edit</a>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="align-self-center mx-auto">
+                <a href="{% url 'register:delete_students' students.id %}" onclick="return confirm('Are Sure?')" class="btn btn-danger">Delete</a>
+            </div>
+        <br>
+</div>
+{% endblock content %}
+

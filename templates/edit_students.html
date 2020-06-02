@@ -1,0 +1,73 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+
+{% ifequal error "no" %}
+<script>
+    alert('Record saved Successfully');
+    window.location=( "{% url 'register:view_students' %}" );
+</script>
+{% endifequal %}
+
+{% ifequal error "yes" %}
+<script>
+    alert('Something went wrong');
+</script>
+{% endifequal %}
+
+<div class="container" style="margin-top:50px">
+    <h2 class="text-center">Update, {{ students.first_name }}</h2>
+    <br><br>
+
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+        <label>ID: {{ students.id }}</label>
+        <br>
+        <label>First Name</label>
+        <input type="text" class="form-control" name="first_name"  value="{{ students.first_name }}"required>
+        <label>Last Name</label>
+        <input type="text" class="form-control" name="last_name"  value="{{ students.last_name }}" required>
+        <label for="std">Standard</label>
+           <select class="form-control" name="std" value="{{ students.std }}">
+            {% if students.std == 'First'%}
+                <option>First</option>
+                <option>Second</option>
+                <option>Third</option>
+                <option>Forth</option>
+            {% elif students.std == 'Second' %}
+                <option>Second</option>
+                <option>First</option>
+                <option>Third</option>
+                <option>Forth</option>
+            {% elif students.std == 'Third' %}
+                <option>Third</option>
+                <option>First</option>
+                <option>Second</option>
+                <option>Forth</option>
+            {% elif students.std == 'Forth' %}
+                <option>Forth</option>
+                <option>First</option>
+                <option>Second</option>
+                <option>Third</option>
+            {% endif %}
+            </select>
+        <br>
+        <label>Total Fee: {{ students.total_fee }}</label>
+        <br>
+        <label>Fee recieved till now: {{ students.fee_recieved }} </label>
+        <br>
+        <label>Remianing Fee: {{ remain }} </label>
+        <br>
+        {% if students.fees == True %}
+        <br>
+        {% else %}
+        <label>Fee Recieved</label>
+        <input type="number" class="form-control" name="fee_recieved"  required>
+        <br>
+        {% endif %}
+        <input type="submit" value="Submit" class="form-control btn btn-primary">
+    </form>
+</div>
+
+{% endblock content %}
